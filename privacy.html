@@ -3,59 +3,782 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Block Frenzy — Privacy Policy</title>
+<title>Block Frenzy — Privacy &amp; Security Policy</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0c0c18;color:#a8a6a0;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;padding:48px 24px;max-width:640px;margin:0 auto}
-h1{color:#fff;font-size:22px;font-weight:700;margin-bottom:4px}
-.meta{font-size:13px;color:#5a5850;margin-bottom:36px}
-h2{color:#d4d2cc;font-size:14px;font-weight:600;margin:28px 0 6px}
-p{font-size:14px;margin-bottom:10px}
-a{color:#F97316}
-footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#3a3830}
+  /* ── Reset ─────────────────────────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── Page ──────────────────────────────────────────────────────────── */
+  body {
+    background: #08081a;
+    color: #c4c2bc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* Subtle grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(78,205,196,0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(255,107,107,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Container ─────────────────────────────────────────────────────── */
+  .page { position: relative; z-index: 1; }
+
+  .hero {
+    padding: 64px 24px 48px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(180deg, rgba(78,205,196,0.06) 0%, transparent 100%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(78,205,196,0.08);
+    border: 1px solid rgba(78,205,196,0.15);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4ECDC4;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: #4ECDC4;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .hero .subtitle {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .hero .subtitle a {
+    color: #4ECDC4;
+    text-decoration: none;
+  }
+
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Table of Contents ─────────────────────────────────────────────── */
+  .toc {
+    margin: 40px 0;
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+  }
+
+  .toc-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 16px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+
+  .toc a {
+    color: #8888aa;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .toc a::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: rgba(78,205,196,0.4);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .toc a:hover { color: #4ECDC4; }
+
+  /* ── Sections ──────────────────────────────────────────────────────── */
+  .section {
+    margin-top: 48px;
+    scroll-margin-top: 24px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .section-icon.teal    { background: rgba(78,205,196,0.10); }
+  .section-icon.red     { background: rgba(255,107,107,0.10); }
+  .section-icon.gold    { background: rgba(255,234,167,0.10); }
+  .section-icon.blue    { background: rgba(69,183,209,0.10); }
+  .section-icon.purple  { background: rgba(187,143,206,0.10); }
+
+  h2 {
+    color: #e8e6e0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  h3 {
+    color: #d4d2cc;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #9a988f;
+  }
+
+  a { color: #4ECDC4; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  strong { color: #d4d2cc; font-weight: 600; }
+
+  /* ── Cards ─────────────────────────────────────────────────────────── */
+  .card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .card.highlight {
+    border-color: rgba(78,205,196,0.15);
+    background: rgba(78,205,196,0.03);
+  }
+
+  .card.warning {
+    border-color: rgba(255,234,167,0.15);
+    background: rgba(255,234,167,0.03);
+  }
+
+  .card.important {
+    border-color: rgba(255,107,107,0.15);
+    background: rgba(255,107,107,0.03);
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .card-label.teal   { color: #4ECDC4; }
+  .card-label.gold   { color: #FFEAA7; }
+  .card-label.red    { color: #FF6B6B; }
+
+  /* ── Data Table ────────────────────────────────────────────────────── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .data-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: #9a988f;
+    vertical-align: top;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .data-table .cat {
+    color: #d4d2cc;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── Third-Party Grid ──────────────────────────────────────────────── */
+  .tp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+
+  .tp-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+
+  .tp-card:hover { border-color: rgba(255,255,255,0.10); }
+
+  .tp-name {
+    color: #d4d2cc;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .tp-purpose {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 6px;
+  }
+
+  .tp-link {
+    font-size: 11px;
+    color: #4ECDC4;
+    text-decoration: none;
+  }
+
+  .tp-link:hover { text-decoration: underline; }
+
+  /* ── Permissions List ──────────────────────────────────────────────── */
+  .perm-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .perm-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 13px;
+    color: #9a988f;
+  }
+
+  .perm-list li:last-child { border-bottom: none; }
+
+  .perm-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .perm-name {
+    color: #d4d2cc;
+    font-weight: 600;
+  }
+
+  /* ── Rights Grid ───────────────────────────────────────────────────── */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+
+  .right-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .right-card .right-title {
+    color: #d4d2cc;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .right-card .right-desc {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  /* ── Footer ────────────────────────────────────────────────────────── */
+  .footer {
+    margin-top: 64px;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: #3a3830;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: #4ECDC4; }
+
+  /* ── Responsive ────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 36px; }
+    .hero h1 { font-size: 26px; }
+    .content { padding: 0 20px 60px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .tp-grid { grid-template-columns: 1fr; }
+    .rights-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 8px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p class="meta">Block Frenzy · Last updated 30 March 2026</p>
+<div class="page">
 
-<h2>Overview</h2>
-<p>Block Frenzy ("the app") is a mobile puzzle game available on iOS and Android. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
+  <!-- ─── Hero ──────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-badge"><span class="dot"></span> Cloudzzy Ltd</div>
+    <h1>Privacy &amp; Security Policy</h1>
+    <p class="subtitle">Block Frenzy &middot; Last updated 3 April 2026 &middot; <a href="delete-data.html">Delete your data</a></p>
+  </header>
 
-<h2>Data we collect</h2>
-<p>The app collects anonymous usage analytics via Google Firebase Analytics, including session duration, number of games played, and feature usage. A device advertising identifier may be collected by Google AdMob for the purpose of serving and personalising advertisements. No personally identifiable information — such as your name, email address, phone number, or location — is collected, stored, or transmitted by the app.</p>
+  <div class="content">
 
-<h2>Advertising</h2>
-<p>The app uses Google AdMob to serve interstitial and rewarded video advertisements. Ads are displayed only between games and are never shown during active gameplay. AdMob may use device identifiers and cookies to deliver personalised ads. You can opt out of personalised advertising in your device settings (iOS: Settings → Privacy → Tracking; Android: Settings → Google → Ads).</p>
+    <!-- ─── TOC ───────────────────────────────────────────────────── -->
+    <nav class="toc">
+      <div class="toc-title">Contents</div>
+      <div class="toc-grid">
+        <a href="#who">Who we are</a>
+        <a href="#collect">What we collect</a>
+        <a href="#use">How we use your data</a>
+        <a href="#ai">AI &amp; language models</a>
+        <a href="#third-party">Third-party services</a>
+        <a href="#storage">Data storage &amp; security</a>
+        <a href="#sharing">Data sharing</a>
+        <a href="#children">Children's privacy</a>
+        <a href="#rights">Your rights</a>
+        <a href="#retention">Data retention</a>
+        <a href="#permissions">App permissions</a>
+        <a href="#changes">Changes to this policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-<h2>In-app purchases</h2>
-<p>The app offers optional in-app purchases, including an option to remove interstitial advertisements. All purchases are processed and managed by Apple (App Store) or Google (Google Play). The app does not collect, process, or store any payment or financial information.</p>
+    <!-- ─── 1. Who We Are ─────────────────────────────────────────── -->
+    <section class="section" id="who">
+      <div class="section-header">
+        <div class="section-icon teal">&#127968;</div>
+        <h2>Who We Are</h2>
+      </div>
+      <p>Block Frenzy is developed and published by <strong>Cloudzzy Ltd</strong>. When this policy says "we", "us", or "our", it refers to Cloudzzy Ltd as the data controller for the Block Frenzy mobile application on iOS and Android.</p>
+    </section>
 
-<h2>Data storage</h2>
-<p>All game progress, settings, and preferences are stored locally on your device. No game data is transmitted to external servers. If you uninstall the app, all locally stored data is permanently deleted.</p>
+    <!-- ─── 2. What We Collect ────────────────────────────────────── -->
+    <section class="section" id="collect">
+      <div class="section-header">
+        <div class="section-icon red">&#128202;</div>
+        <h2>What We Collect</h2>
+      </div>
+      <p>The table below lists every category of data the app may collect or process, what it includes, and where it is stored.</p>
 
-<h2>Third-party services</h2>
-<p>The app integrates the following third-party services, each governed by their own privacy policies:</p>
-<p>Google Firebase Analytics (<a href="https://firebase.google.com/support/privacy">privacy policy</a>), Google AdMob (<a href="https://policies.google.com/privacy">privacy policy</a>), Apple Game Center (<a href="https://www.apple.com/legal/privacy/">privacy policy</a>), Google Play Games Services (<a href="https://policies.google.com/privacy">privacy policy</a>).</p>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>What's Collected</th>
+              <th>Where It Goes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat">Account</td>
+              <td>Firebase anonymous ID, display name (if you set one)</td>
+              <td>Firebase Auth, Cloud Firestore, RevenueCat</td>
+            </tr>
+            <tr>
+              <td class="cat">Gameplay</td>
+              <td>Scores, lines cleared, combos, session duration, game mode</td>
+              <td>Firebase Analytics, Cloud Firestore (leaderboards)</td>
+            </tr>
+            <tr>
+              <td class="cat">Profile</td>
+              <td>XP, level, cosmetics, streaks, avatar URL</td>
+              <td>On-device (Hive, encrypted), Cloud Firestore</td>
+            </tr>
+            <tr>
+              <td class="cat">AI Features</td>
+              <td>Board state, piece data, game statistics (not personal data)</td>
+              <td>Custom backend (Firebase-authenticated)</td>
+            </tr>
+            <tr>
+              <td class="cat">Avatar</td>
+              <td>User-selected photo (opt-in, Pro only)</td>
+              <td>Cloud Function &rarr; OpenAI &rarr; Firebase Cloud Storage</td>
+            </tr>
+            <tr>
+              <td class="cat">Ads</td>
+              <td>Device info, IDFA/GAID (OS-level ad identifiers)</td>
+              <td>Google AdMob</td>
+            </tr>
+            <tr>
+              <td class="cat">Purchases</td>
+              <td>Receipt data, entitlements (no payment card info)</td>
+              <td>RevenueCat, Play Store, App Store</td>
+            </tr>
+            <tr>
+              <td class="cat">Leaderboards</td>
+              <td>Score, gamer tag</td>
+              <td>Google Play Games / Apple Game Center</td>
+            </tr>
+            <tr>
+              <td class="cat">Device</td>
+              <td>Model, OS version</td>
+              <td>Firebase Analytics</td>
+            </tr>
+            <tr>
+              <td class="cat">Local Storage</td>
+              <td>Game state, preferences, settings</td>
+              <td>On-device only (Hive, AES-256 encrypted)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-<h2>Children's privacy</h2>
-<p>Block Frenzy is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe that a child under 13 has provided personal information through the app, please contact us so we can take appropriate action.</p>
+    <!-- ─── 3. How We Use Your Data ───────────────────────────────── -->
+    <section class="section" id="use">
+      <div class="section-header">
+        <div class="section-icon blue">&#9881;&#65039;</div>
+        <h2>How We Use Your Data</h2>
+      </div>
+      <p>We process your data for these specific purposes only:</p>
 
-<h2>Data sharing</h2>
-<p>We do not sell, trade, or transfer your data to third parties. Anonymous analytics data is shared only with Google Firebase for the purpose of improving the app experience. Advertising data is shared with Google AdMob solely for the purpose of ad delivery.</p>
+      <h3>Gameplay &amp; Progression</h3>
+      <p>Scores, stats, and game state are used to save your progress, display your profile, track career statistics, and resume interrupted sessions.</p>
 
-<h2>Data retention</h2>
-<p>Analytics data collected by Firebase is retained according to Google's standard data retention policies. The app itself does not maintain any server-side data store. All user data exists only on the user's device.</p>
+      <h3>Leaderboards &amp; Cloud Sync</h3>
+      <p>Your display name and scores are synced to Cloud Firestore so you can appear on leaderboards and restore progress across devices. Cloud sync uses smart conflict resolution &mdash; your highest stats always win.</p>
 
-<h2>Your rights</h2>
-<p>You can reset your advertising identifier or opt out of personalised ads at any time through your device settings. You can delete all app data by uninstalling the app. If you are located in the European Economic Area (EEA), you have additional rights under the General Data Protection Regulation (GDPR), including the right to access, rectify, or erase your personal data.</p>
+      <h3>AI-Powered Features</h3>
+      <p>When AI features are enabled, non-personal game data (board layout, piece positions, statistics) is sent to our backend to generate hints, commentary, and post-game analysis. See the <a href="#ai">AI section</a> for full details.</p>
 
-<h2>Changes to this policy</h2>
-<p>We may update this privacy policy from time to time. Changes will be reflected on this page with an updated revision date. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+      <h3>Advertising</h3>
+      <p>We serve interstitial and rewarded ads via Google AdMob. Ads are <strong>never</strong> shown during active gameplay. AdMob may use device identifiers for ad personalisation, which you can control in your device settings.</p>
 
-<h2>Contact</h2>
-<p>For privacy-related questions, data requests, or concerns, contact us at <a href="mailto:support@blockfrenzy.app">support@blockfrenzy.app</a>.</p>
+      <h3>Purchases</h3>
+      <p>In-app purchases (Remove Ads, Pro subscription) are processed entirely by Apple, Google, and RevenueCat. We receive entitlement status only &mdash; never your payment details.</p>
 
-<footer>&copy; 2026 Block Frenzy</footer>
+      <h3>Analytics</h3>
+      <p>Anonymous gameplay analytics (session length, games played, feature usage) help us understand how players interact with the game and improve the experience.</p>
+    </section>
+
+    <!-- ─── 4. AI & Language Models ───────────────────────────────── -->
+    <section class="section" id="ai">
+      <div class="section-header">
+        <div class="section-icon purple">&#129302;</div>
+        <h2>AI &amp; Large Language Models</h2>
+      </div>
+
+      <div class="card warning">
+        <div class="card-label gold">Transparency</div>
+        <p style="margin-bottom:0;">Block Frenzy uses AI to power gameplay features. We believe you should know exactly what data is sent, where it goes, and how to control it.</p>
+      </div>
+
+      <h3>AI Gameplay Features (Hints, Commentary, Analysis)</h3>
+      <p>When enabled, the app sends <strong>non-personal game data</strong> &mdash; your board layout, available pieces, score, and move history &mdash; to our Firebase-authenticated backend. This data is used to generate real-time hints, live commentary, smart piece suggestions, and post-game analysis. No personal information (name, email, location) is included in these requests.</p>
+
+      <h3>AI Avatar Generation (Pro Only, Opt-In)</h3>
+      <p>Pro subscribers can generate a custom avatar from a photo. When you choose to use this feature:</p>
+      <ul style="margin: 8px 0 12px 20px; font-size: 14px; color: #9a988f;">
+        <li>Your selected photo is sent as base64 data to a Firebase Cloud Function</li>
+        <li>The Cloud Function forwards it to <strong>OpenAI's gpt-image-1 API</strong> for stylised avatar generation</li>
+        <li>The original photo is <strong>not stored</strong> after processing &mdash; only the generated avatar image is kept in Firebase Cloud Storage</li>
+        <li>Avatar generation is rate-limited to 3 per day per user</li>
+      </ul>
+
+      <div class="card highlight">
+        <div class="card-label teal">You're in control</div>
+        <p style="margin-bottom:0;">All AI features can be fully disabled in <strong>Settings &rarr; AI Assistant</strong>. When disabled, zero data is sent to any AI service. Avatar generation is entirely opt-in and requires explicit action.</p>
+      </div>
+    </section>
+
+    <!-- ─── 5. Third-Party Services ───────────────────────────────── -->
+    <section class="section" id="third-party">
+      <div class="section-header">
+        <div class="section-icon gold">&#128279;</div>
+        <h2>Third-Party Services</h2>
+      </div>
+      <p>Block Frenzy integrates the following services, each governed by their own privacy policies:</p>
+
+      <div class="tp-grid">
+        <div class="tp-card">
+          <div class="tp-name">Firebase (Google)</div>
+          <div class="tp-purpose">Auth, Analytics, Firestore, Cloud Storage, Cloud Functions</div>
+          <a class="tp-link" href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+        <div class="tp-card">
+          <div class="tp-name">Google AdMob</div>
+          <div class="tp-purpose">Interstitial &amp; rewarded ads</div>
+          <a class="tp-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+        <div class="tp-card">
+          <div class="tp-name">RevenueCat</div>
+          <div class="tp-purpose">Subscription &amp; IAP management</div>
+          <a class="tp-link" href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+        <div class="tp-card">
+          <div class="tp-name">OpenAI</div>
+          <div class="tp-purpose">Avatar generation (Pro, opt-in only)</div>
+          <a class="tp-link" href="https://openai.com/privacy" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+        <div class="tp-card">
+          <div class="tp-name">Google Play Games</div>
+          <div class="tp-purpose">Leaderboards &amp; achievements (Android)</div>
+          <a class="tp-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+        <div class="tp-card">
+          <div class="tp-name">Apple Game Center</div>
+          <div class="tp-purpose">Leaderboards &amp; achievements (iOS)</div>
+          <a class="tp-link" href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy Policy &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 6. Data Storage & Security ────────────────────────────── -->
+    <section class="section" id="storage">
+      <div class="section-header">
+        <div class="section-icon teal">&#128274;</div>
+        <h2>Data Storage &amp; Security</h2>
+      </div>
+
+      <h3>Local Data</h3>
+      <p>All on-device data (game state, preferences, profile) is stored using Hive with <strong>AES-256 encryption</strong>. Sensitive values such as auth tokens are stored in platform-native secure storage (Keychain on iOS, EncryptedSharedPreferences on Android). No plaintext sensitive data is written to disk.</p>
+
+      <h3>Cloud Data</h3>
+      <p>Cloud data is stored in Google Cloud Firestore within the Firebase ecosystem, protected by Google Cloud's infrastructure security, encryption at rest (AES-256), and encryption in transit (TLS 1.3). Access to cloud data requires Firebase Authentication.</p>
+
+      <h3>App Integrity</h3>
+      <p>The app performs basic device integrity checks to protect the fairness of leaderboards. No root/jailbreak data is transmitted &mdash; only a pass/fail signal is logged.</p>
+    </section>
+
+    <!-- ─── 7. Data Sharing ───────────────────────────────────────── -->
+    <section class="section" id="sharing">
+      <div class="section-header">
+        <div class="section-icon red">&#128275;</div>
+        <h2>Data Sharing</h2>
+      </div>
+
+      <div class="card important">
+        <div class="card-label red">Our Promise</div>
+        <p style="margin-bottom:0;color:#d4d2cc;"><strong>We do not sell, rent, or trade your personal data. Ever.</strong> Your data is never shared with data brokers, marketing companies, or any third party for their own commercial purposes.</p>
+      </div>
+
+      <p>Data is shared only with the third-party service providers listed above, solely for the purpose of delivering the app's functionality (analytics, ads, purchases, leaderboards, AI features). Each provider receives only the minimum data required to perform their function.</p>
+    </section>
+
+    <!-- ─── 8. Children's Privacy ─────────────────────────────────── -->
+    <section class="section" id="children">
+      <div class="section-header">
+        <div class="section-icon gold">&#128118;</div>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>Block Frenzy includes a <strong>Kids Mode</strong> designed for younger players. Kids Mode is protected by a parental gate (a simple maths question) to prevent unsupervised access by very young children.</p>
+      <p>In Kids Mode:</p>
+      <ul style="margin: 8px 0 12px 20px; font-size: 14px; color: #9a988f;">
+        <li>No additional personal information is collected beyond standard gameplay analytics</li>
+        <li>No social features, leaderboards, or user-generated content are available</li>
+        <li>Ads follow the same rules as the rest of the app (never during gameplay)</li>
+        <li>AI features are available only if enabled by a parent in Settings</li>
+      </ul>
+      <p>We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information through the app, please <a href="#contact">contact us</a> so we can take appropriate action. We comply with COPPA (Children's Online Privacy Protection Act) and applicable international children's privacy laws.</p>
+    </section>
+
+    <!-- ─── 9. Your Rights ────────────────────────────────────────── -->
+    <section class="section" id="rights">
+      <div class="section-header">
+        <div class="section-icon blue">&#9989;</div>
+        <h2>Your Rights</h2>
+      </div>
+      <p>You have full control over your data. Here's what you can do:</p>
+
+      <div class="rights-grid">
+        <div class="right-card">
+          <div class="right-title">&#128269; Access Your Data</div>
+          <div class="right-desc">Request a copy of all data we hold about you by contacting us at the email below.</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">&#128465;&#65039; Delete Your Data</div>
+          <div class="right-desc">Delete local data by uninstalling the app or clearing app data. Request cloud deletion via our <a href="delete-data.html">data deletion page</a>.</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">&#129302; Opt Out of AI</div>
+          <div class="right-desc">Disable all AI features in Settings &rarr; AI Assistant. No game data will be sent to any AI service.</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">&#128226; Opt Out of Ads</div>
+          <div class="right-desc">Purchase "Remove Ads" or subscribe to Pro to eliminate interstitial ads. Disable personalised ads in your device settings.</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">&#128205; Opt Out of Tracking</div>
+          <div class="right-desc">Control ad tracking via iOS Settings &rarr; Privacy &rarr; Tracking, or Android Settings &rarr; Google &rarr; Ads.</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">&#127758; GDPR Rights</div>
+          <div class="right-desc">EEA residents have rights to access, rectify, erase, restrict, port, and object to data processing under GDPR.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 10. Data Retention ────────────────────────────────────── -->
+    <section class="section" id="retention">
+      <div class="section-header">
+        <div class="section-icon purple">&#9203;</div>
+        <h2>Data Retention</h2>
+      </div>
+      <p><strong>Local data</strong> is retained on your device until you uninstall the app or clear app storage.</p>
+      <p><strong>Cloud data</strong> (profile, leaderboard entries, synced game state) is retained until you request account deletion. Upon deletion, all associated Firestore documents and Cloud Storage files are permanently removed within 30 days.</p>
+      <p><strong>Analytics data</strong> is retained according to Firebase Analytics' standard retention policy (14 months for user-level data, aggregated data retained indefinitely).</p>
+      <p><strong>AI processing data</strong> (board states sent for hints/analysis) is transient and not stored after the response is generated.</p>
+      <p><strong>Avatar photos</strong> (sent for generation) are not retained after processing. Only the generated avatar image is stored in Cloud Storage, linked to your account.</p>
+    </section>
+
+    <!-- ─── 11. App Permissions ───────────────────────────────────── -->
+    <section class="section" id="permissions">
+      <div class="section-header">
+        <div class="section-icon teal">&#128241;</div>
+        <h2>App Permissions</h2>
+      </div>
+      <p>Block Frenzy requests only the permissions it needs:</p>
+
+      <ul class="perm-list">
+        <li>
+          <div class="perm-icon">&#128247;</div>
+          <div><span class="perm-name">Camera / Photo Library</span> &mdash; Used only for AI avatar generation (Pro, opt-in). Never accessed without your explicit action.</div>
+        </li>
+        <li>
+          <div class="perm-icon">&#128243;</div>
+          <div><span class="perm-name">Vibration</span> &mdash; Haptic feedback during gameplay. Can be disabled in Settings.</div>
+        </li>
+        <li>
+          <div class="perm-icon">&#127760;</div>
+          <div><span class="perm-name">Internet</span> &mdash; Required for cloud sync, leaderboards, ads, analytics, AI features, and purchases.</div>
+        </li>
+      </ul>
+
+      <p>Block Frenzy does <strong>not</strong> request access to your location, contacts, microphone, calendar, or any other sensitive permissions.</p>
+    </section>
+
+    <!-- ─── 12. Changes ───────────────────────────────────────────── -->
+    <section class="section" id="changes">
+      <div class="section-header">
+        <div class="section-icon gold">&#128196;</div>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>We may update this privacy policy to reflect changes in the app or applicable laws. When we do, the "Last updated" date at the top of this page will be revised. For significant changes, we will notify users via an in-app notice. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <!-- ─── 13. Contact ───────────────────────────────────────────── -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <div class="section-icon blue">&#9993;&#65039;</div>
+        <h2>Contact</h2>
+      </div>
+      <p>For privacy-related questions, data access requests, deletion requests, or any concerns about this policy, contact us at:</p>
+      <div class="card highlight">
+        <p style="margin-bottom:0;"><strong><a href="mailto:support@blockfrenzy.app">support@blockfrenzy.app</a></strong></p>
+      </div>
+      <p style="margin-top:12px;">We aim to respond to all privacy-related enquiries within 14 days.</p>
+    </section>
+
+    <!-- ─── Footer ────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="footer-left">&copy; 2026 Cloudzzy Ltd. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="delete-data.html">Delete Data</a>
+        <a href="mailto:support@blockfrenzy.app">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
 </body>
 </html>
